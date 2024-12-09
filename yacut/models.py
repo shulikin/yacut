@@ -1,6 +1,5 @@
 import random
 import re
-from collections import OrderedDict
 from datetime import datetime
 
 from flask import url_for
@@ -28,11 +27,14 @@ class URLMap(db.Model):
         self.short = data['custom_id']
 
     def to_dict(self):
-        return OrderedDict([
-            ("url", self.original),
-            ("short_link", url_for('redirect_short_url',
-                                   url=self.short, _external=True))
-        ])
+        return {
+            'url': self.original,
+            'short_link': url_for(
+                'redirect_short_url',
+                url=self.short,
+                _external=True
+            )
+        }
 
     @staticmethod
     def get_unique_short_id():

@@ -11,7 +11,7 @@ from yacut.models import URLMap
 def generate_short_url():
     """API генерации short ссылки."""
     if not request.data or not (data := request.get_json()):
-        raise InvalidAPIUsage("Отсутствует тело запроса")
+        raise InvalidAPIUsage('Отсутствует тело запроса')
     if 'url' not in data:
         raise InvalidAPIUsage('"url" является обязательным полем!')
     try:

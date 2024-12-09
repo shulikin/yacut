@@ -26,7 +26,7 @@ class InvalidAPIUsage(Exception):
 
     def to_dict(self):
         """Метод возвращает словарь с сообщением."""
-        return dict(message=self.message)
+        return {'message': self.message}
 
 
 @app.errorhandler(InvalidAPIUsage)
